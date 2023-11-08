@@ -33,18 +33,17 @@ const App = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <div className="add" onClick={isUpdating
-            ? () => {
-              if (text.trim() !== '') {
+          <div className="add" onClick={() => {
+            if (text.trim() !== '') {
+              if (isUpdating) {
                 updateToDo(toDoId, text, setToDo, setText, setIsUpdating);
-              }
-            }
-            : () => {
-              if (text.trim() !== '') {
+              } else {
                 addToDo(text, setText, setToDo);
               }
+            } else {
+              alert("يرجى إضافة مهمة قبل النقر على 'Add'");
             }
-          }>
+          }}>
             {isUpdating ? "Update" : "Add"}
           </div>
         </div>
